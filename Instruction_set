@@ -86,3 +86,16 @@ Results saved to runs/detect/val205
 [Eff ] FPS/W (gross): 1.7210 (1/W)
 [Power] net power (minus idle): 21.56 W
 [Eff ] FPS/W (net): 2.5835 (1/W)
+
+
+!python sa_wbf_tuner.py \
+  --weights runs/detect/YOLO11-mac2-p245-progFPNv2-cooldnv2/weights/best.pt \
+  --data /content/drive/MyDrive/yolov13-solar/dataset/data.yaml \
+  --imgsz 640 --batch 4 \
+  --metric map5095 \
+  --iters 60 --temp0 1.0 --alpha 0.90 --steps-per-temp 5 \
+  --conf-range 0.001 0.3 \
+  --wbf-iou-range 0.3 0.8 \
+  --max-det-range 100 500 \
+  --seed 42 \
+  --project runs/sa_wbf --name coffee_part001_sa
