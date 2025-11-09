@@ -162,20 +162,8 @@ Outputs:
 
 ---
 
-## 📚 Citation
-If you find this work useful, please cite:
-```bibtex
-@article{yolo11m_hotspot2025,
-  title   = {Mixed Aggregation Networks and Progressive Cooling Training for Thermal Hotspot Severity Detection on Photovoltaic Panels},
-  author  = {Guo, Shirong and Sun, Wei and et al.},
-  journal = {Energy Conversion and Management},
-  year    = {2025}
-}
-```
-
----
 
 ## 📩 Contact
 For questions or collaborations:  
-**Email:** shirong.guo@outlook.com  
-**Institution:** Shenzhen Institute of Advanced Technology, CAS
+**Email:** shirong.guo@monash.edu; shannongsr@yeah.net
+**Institution:** Monash University
