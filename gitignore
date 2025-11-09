@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.pth
+*.ipynb_checkpoints
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+
+# Build / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs and checkpoints
+*.log
+*.out
+*.err
+runs/
+wandb/
+tensorboard/
+lightning_logs/
+logs/
+
+# Datasets and results
+data/
+dataset/
+outputs/
+results/
+checkpoints/
+weights/
+*.pt
+*.onnx
+*.engine
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Custom project-specific ignores
+MSPC/__pycache__/
+MSPC/*.cache
