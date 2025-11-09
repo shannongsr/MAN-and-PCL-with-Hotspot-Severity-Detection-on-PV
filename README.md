@@ -1,4 +1,4 @@
-# 🌞 Severity-Aware Thermal Hotspot Detection (YOLOv11-M)
+# 🌞 Severity-Aware Thermal Hotspot Detection (YOLOv11-MSPC)
 
 Official implementation of the paper:  
 **“Mixed Aggregation Networks and Progressive Cooling Training for Thermal Hotspot Severity Detection on Photovoltaic Panels”**
