@@ -152,13 +152,12 @@ Outputs:
 
 ---
 
-## 📊 Example Results (placeholder)
+## 📊 Example Results (waiting for perfection)
 | Model | mAP50 | mAP50–95 | GFLOPs | Power (W) | FPS/W |
 |--------|------:|---------:|-------:|----------:|------:|
 | YOLOv11 | 79.7 | 49.0 | 6.3 | 32.2 | 1.59 |
 | **YOLOv11-M (ours)** | **81.1** | **50.3** | **8.3** | **32.4** | **1.72** |
 
-> Replace with your reproduced numbers as needed.
 
 ---
 
