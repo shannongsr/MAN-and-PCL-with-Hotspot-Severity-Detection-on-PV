@@ -1,0 +1,88 @@
+!python CAM_pred.py \
+  --weights runs/detect/YOLO11_300_solar/weights/best.pt \
+  --weights_row3 runs/detect/YOLO11-mac2-p234_300_solar/weights/best.pt \
+  --device cuda:0 \
+  --method EigenCAM \
+  --layers 16 19 22 \
+  --backward_type all \
+  --conf 0.03167 \
+  --ratio 0.25 \
+  --imgsz 640 \
+  --save_dir result_cam_selected3 \
+  --montage cam_selected3_montage.png \
+  --cam_in_bbox \
+  --renorm_in_bbox \
+  --indices 1 2 3
+
+✅ 按文件名排序，选择第 [1, 2, 3] 张：
+   - DJI_20240627100903_0009_T_JPG_jpg.rf.1712e53d68c0eac7040fb38609c6e78e.jpg
+   - DJI_20240627101117_0011_T_JPG.rf.185c1714fd4219f191ae5767b8a538be.jpg
+   - DJI_20240627101320_0015_T_JPG_jpg.rf.8c9a9aedd0e9c5b61e2a4f521e54ad01.jpg
+✅ 单图已保存到: /content/drive/MyDrive/yolov13-solar/result_cam_selected3
+✅ 拼图已保存为: /content/drive/MyDrive/yolov13-solar/cam_selected3_montage.png
+ℹ️ 行数: 3；保留左上角序号与列标题（Case 1/2/3）。--weights_row4 未提供则自动为 3 行。
+
+
+!python eval_fps_fp32.py \
+  --weights runs/detect/YOLO11-mac2-p245_300_solar/weights/best.pt \
+  --data /content/drive/MyDrive/yolov13-solar/dataset/data.yaml \
+  --imgsz 640 --device cuda --split test \
+  --batch 1 --warmup 1 --repeats 3 \
+  --idle_seconds 3 --power_hz 20
+
+[POWER] Idle baseline (avg over 3.0s): 10.81 W
+[Warmup] 1/1
+Ultralytics 8.3.63 🚀 Python-3.12.12 torch-2.8.0+cu126 CUDA:0 (Tesla T4, 15095MiB)
+YOLO11-mac2-p245 summary (fused): 239 layers, 3,004,297 parameters, 0 gradients, 8.3 GFLOPs
+val: Scanning /content/drive/MyDrive/yolov13-solar/dataset/test/labels.cache... 86 images, 0 backgrounds, 0 corrupt: 100% 86/86 [00:00<?, ?it/s]
+                 Class     Images  Instances      Box(P          R      mAP50      mAP75  mAP50-95): 100% 86/86 [00:02<00:00, 36.68it/s]
+                   all         86        643      0.849      0.779       0.81      0.524      0.503
+Speed: 0.6ms preprocess, 18.2ms inference, 0.0ms loss, 2.3ms postprocess per image
+Results saved to runs/detect/val202
+
+[Run 1/3] Starting timed eval (FP32)...
+Ultralytics 8.3.63 🚀 Python-3.12.12 torch-2.8.0+cu126 CUDA:0 (Tesla T4, 15095MiB)
+val: Scanning /content/drive/MyDrive/yolov13-solar/dataset/test/labels.cache... 86 images, 0 backgrounds, 0 corrupt: 100% 86/86 [00:00<?, ?it/s]
+                 Class     Images  Instances      Box(P          R      mAP50      mAP75  mAP50-95): 100% 86/86 [00:02<00:00, 38.13it/s]
+                   all         86        643      0.849      0.779       0.81      0.524      0.503
+      Serious hot spot         72         89      0.948      0.978      0.967      0.761      0.651
+       Slight hot spot         83        194       0.87      0.826      0.882      0.683      0.636
+                  dirt         75        360      0.729      0.533      0.581      0.128       0.22
+Speed: 0.6ms preprocess, 17.7ms inference, 0.0ms loss, 1.6ms postprocess per image
+Results saved to runs/detect/val203
+[Speed] inference=17.72 ms/img -> FPS≈56.42 | wall=5.01s
+[Power] avg=32.30 W | net=21.49 W
+
+[Run 2/3] Starting timed eval (FP32)...
+Ultralytics 8.3.63 🚀 Python-3.12.12 torch-2.8.0+cu126 CUDA:0 (Tesla T4, 15095MiB)
+val: Scanning /content/drive/MyDrive/yolov13-solar/dataset/test/labels.cache... 86 images, 0 backgrounds, 0 corrupt: 100% 86/86 [00:00<?, ?it/s]
+                 Class     Images  Instances      Box(P          R      mAP50      mAP75  mAP50-95): 100% 86/86 [00:02<00:00, 40.61it/s]
+                   all         86        643      0.849      0.779       0.81      0.524      0.503
+      Serious hot spot         72         89      0.948      0.978      0.967      0.761      0.651
+       Slight hot spot         83        194       0.87      0.826      0.882      0.683      0.636
+                  dirt         75        360      0.729      0.533      0.581      0.128       0.22
+Speed: 0.7ms preprocess, 16.9ms inference, 0.0ms loss, 1.5ms postprocess per image
+Results saved to runs/detect/val204
+[Speed] inference=16.95 ms/img -> FPS≈59.01 | wall=6.11s
+[Power] avg=32.13 W | net=21.32 W
+
+[Run 3/3] Starting timed eval (FP32)...
+Ultralytics 8.3.63 🚀 Python-3.12.12 torch-2.8.0+cu126 CUDA:0 (Tesla T4, 15095MiB)
+val: Scanning /content/drive/MyDrive/yolov13-solar/dataset/test/labels.cache... 86 images, 0 backgrounds, 0 corrupt: 100% 86/86 [00:00<?, ?it/s]
+                 Class     Images  Instances      Box(P          R      mAP50      mAP75  mAP50-95): 100% 86/86 [00:02<00:00, 34.69it/s]
+                   all         86        643      0.849      0.779       0.81      0.524      0.503
+      Serious hot spot         72         89      0.948      0.978      0.967      0.761      0.651
+       Slight hot spot         83        194       0.87      0.826      0.882      0.683      0.636
+                  dirt         75        360      0.729      0.533      0.581      0.128       0.22
+Speed: 0.7ms preprocess, 19.2ms inference, 0.0ms loss, 1.8ms postprocess per image
+Results saved to runs/detect/val205
+[Speed] inference=19.18 ms/img -> FPS≈52.14 | wall=5.40s
+[Power] avg=32.68 W | net=21.87 W
+
+========== SUMMARY (FP32) ==========
+[FPS]  inference avg: 17.95 ms/img  ->  55.71 FPS
+[Time] wall-clock avg per run: 5.51 s
+[Power] avg power: 32.37 W
+[Eff ] FPS/W (gross): 1.7210 (1/W)
+[Power] net power (minus idle): 21.56 W
+[Eff ] FPS/W (net): 2.5835 (1/W)
