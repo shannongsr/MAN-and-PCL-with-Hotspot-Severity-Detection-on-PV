@@ -4,29 +4,60 @@ Official implementation of the paper:
 **“Mixed Aggregation Networks and Progressive Cooling Training for Thermal Hotspot Severity Detection on Photovoltaic Panels”**
 
 This repository provides reproducible scripts for **training**, **noise robustness evaluation**, and **post-processing optimization** of the proposed YOLOv11-M detector under fixed-pattern noise (FPN).  
-It includes implementations of **progressive curriculum training**, **progressive+cooldown training**, **simulated annealing (SA) post-processing tuners**, and **GPU power–aware benchmarking**.
+It includes implementations of **progressive curriculum training**, **progressive+cooldown training**, **simulated annealing (SA) post-processing tuners**, and **GPU power–aware benchmarking**; and now **embedded deployment on RK3576** using the YOLOv11‑M (MANet) architecture.
 
 ---
 
 ## 📦 Repository Structure
 
-> **Note:** All runnable scripts live under the `MSPC/` directory. This `README.md` is placed at repo root (same level as `MSPC/`).
-
 ```
+.
 .
 ├── MSPC/
 │   ├── eval_fps_fp32.py              # FP32 evaluation with GPU power sampling (NVML)
 │   ├── eval_nms.py                   # Unified evaluator with NMS / Soft-NMS / WBF options
 │   ├── ir_noise.py                   # Fixed-pattern noise (FPN) dataset augmentation tool
 │   ├── nonpregre_train.py            # Baseline YOLO training script (no progressive regime)
-│   ├── PCL_train.py                  # Progressive + Cooldown Training (PCL = progressive + cooldown) ✅
-│   ├── progressive_train.py          # Progressive Curriculum Learning (progressive-only) ✅
+│   ├── PCL_train.py                  # Progressive + Cooldown Training (PCL = progressive + cooldown)
+│   ├── progressive_train.py          # Progressive Curriculum Learning (progressive-only)
 │   ├── sa_nms_tuner.py               # Simulated Annealing tuner for hard NMS parameters
 │   ├── sa_softnms_linear_tuner.py    # Simulated Annealing tuner for Soft-NMS (Linear)
-│   ├── sa_wbf_tuner.py               # Simulated Annealing tuner for WBF fusion
-│   └── __init__.py (optional)
-└── README.md                         # (this file, at repo root)
+│   └── sa_wbf_tuner.py               # Simulated Annealing tuner for WBF fusion
+│
+├── RKNN_for_MSPC/                # NEW: RK3576 deployment folder
+│   ├── README.md                 # Full deployment instructions
+│   ├── YOLOv11-M-s320_rk3576.rknn
+│   ├── convert_fast_s320.py
+│   ├── batch_infer_fps_s320.py
+│   ├── dataset_320.txt
+│   ├── dataset320_img.zip
+│   └── real_test.jpg
+│
+└── README.md
 ```
+
+---
+
+## 🆕 RKNN Deployment (RK3576)
+
+A new module **`RKNN_for_MSPC/`** has been added to provide:
+
+- **YOLOv11‑M MANet (no DFL) RKNN models**
+- **320×320 optimized model achieving 50.76 FPS on RK3576**
+- **ONNX→RKNN conversion scripts**
+- **Hybrid quantization dataset + calibration files**
+- **Batch inference FPS benchmarking scripts**
+- **Real device demonstration photo**
+
+Real‑device performance (from `real_test.jpg` in the folder):
+
+**➡️ YOLOv11‑M MANet (no DFL), 320×320 input, 50.76 FPS on RK3576**
+
+![RKNN Test](RKNN_for_MSPC/real_test.jpg)
+
+Full deployment details (conversion, quantization, inference) are documented in the sub‑README:
+
+👉 **https://github.com/shannongsr/MAN-and-PCL-with-Hotspot-Severity-Detection-on-PV/tree/main/RKNN_for_MSPC**
 
 ---
 
@@ -161,8 +192,8 @@ Outputs:
 
 ---
 
-
 ## 📩 Contact
 For questions or collaborations:  
-**Email:** shirong.guo@monash.edu; shannongsr@yeah.net
-**Institution:** Monash University
+📧 **shirong.guo@monash.edu**  
+📧 **shannongsr@yeah.net**  
+🏫 **Monash University**
