@@ -1,7 +1,7 @@
 # 🌞 Severity-Aware Thermal Hotspot Detection (YOLOv11-MSPC)
 
-Official implementation of the paper:  
-**“Mixed Aggregation Networks and Progressive Cooling Training for Thermal Hotspot Severity Detection on Photovoltaic Panels”**
+This repository contains the official implementation of our ongoing research project on **“Mixed Aggregation Networks and Progressive Cooling Training for severity-aware thermal hotspot detection on photovoltaic panels”**.
+The work is currently under development and the manuscript is in preparation.
 
 This repository provides reproducible scripts for **training**, **noise robustness evaluation**, and **post-processing optimization** of the proposed YOLOv11-M detector under fixed-pattern noise (FPN).  
 It includes implementations of **progressive curriculum training**, **progressive+cooldown training**, **simulated annealing (SA) post-processing tuners**, and **GPU power–aware benchmarking**; and now **embedded deployment on RK3576** using the YOLOv11‑M (MANet) architecture.
