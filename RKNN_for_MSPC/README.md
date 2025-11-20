@@ -3,6 +3,10 @@
 This repository contains the complete workflow for deploying **YOLOv11-M (MANet)** on the **RK3576** embedded platform, including ONNX export, RKNN conversion, mixed quantization, inference scripts, FPS benchmarking, and real-device testing.  
 This README explains the purpose and origin of each file and provides instructions to reproduce the deployment process.
 
+> **Note:** Due to GitHub repository size limits, only the **320×320 RKNN model** is included here.  
+> All other RKNN and ONNX model files can be downloaded from:  
+> **https://drive.google.com/drive/folders/1vip_bg-DbUFwjF_mvZ5U2eBuZbtQYM1K?usp=drive_link**
+
 ---
 
 ## 📁 Repository Contents
@@ -29,7 +33,9 @@ This README explains the purpose and origin of each file and provides instructio
 
 ## 3️⃣ Model Files
 
-### Original ONNX Models
+### Original ONNX Models  
+*(Full models available via Google Drive link above)*
+
 | File | Description |
 |------|-------------|
 | `YOLOv11-M.onnx` | Original YOLOv11-M baseline (640×640). |
@@ -37,11 +43,14 @@ This README explains the purpose and origin of each file and provides instructio
 | `YOLOv11-M-s320.onnx` | Final **320 input MANet ONNX model** used for RKNN conversion. |
 
 ### RKNN Models (Ready for RK3576 Deployment)
+
+Only the final model is included in this repository; others are hosted in Google Drive.
+
 | File | Description |
 |------|-------------|
-| `YOLOv11-M.rknn` | RKNN model (640 input). |
-| `YOLOv11-M-nodflv2_rk3576.rknn` | MANet + no DFL model for RK3576. |
-| `YOLOv11-M-s320_rk3576.rknn` | **Final deployment model: MANet + no DFL + 320 input → 50.76 FPS** |
+| `YOLOv11-M.rknn` | RKNN model (640 input). *(Download via Google Drive)* |
+| `YOLOv11-M-nodflv2_rk3576.rknn` | MANet + no DFL model for RK3576. *(Download via Google Drive)* |
+| `YOLOv11-M-s320_rk3576.rknn` | **Final deployment model: MANet + no DFL + 320 input → 50.76 FPS** *(Included in repository)* |
 
 ---
 
@@ -104,7 +113,13 @@ FPS: 50.76
 - Removed DFL to fully support RKNN inference  
 - Optimized input size to **320×320** for best performance  
 - Final real-device performance: **50.76 FPS**  
-- Complete workflow included ONNX export → RKNN conversion → quantization → on-device evaluation  
+- Complete workflow includes ONNX export → RKNN conversion → quantization → on-device evaluation  
 
 ---
+
+## 📬 Contact
+
+For questions, feel free to contact:  
+**Shirong Guo**  
+📧 **shirong.guo@monash.edu**
 
